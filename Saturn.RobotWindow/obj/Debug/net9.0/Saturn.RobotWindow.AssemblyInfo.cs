@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Saturn.RobotWindow")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33fcd0e425e868a6ab4b157bf26df8dbd0a117d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+313840643153c80f843eaca754bf8b42d4f05f47")]
 [assembly: System.Reflection.AssemblyProductAttribute("Saturn.RobotWindow")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Saturn.RobotWindow")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
