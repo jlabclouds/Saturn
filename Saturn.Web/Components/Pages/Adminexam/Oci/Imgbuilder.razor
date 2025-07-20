@@ -1,0 +1,99 @@
+@page "/adminexam/oci/imgbuilder"
+
+<PageTitle>OCI Image Builder</PageTitle>
+<!doctype html>
+<html lang="en">
+<body>
+     <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>OCI Image Builder</h1>
+                    <p>OCI Image Builder is a service that allows you to create and manage custom images for your Oracle Cloud Infrastructure (OCI) instances. It provides a simple and efficient way to build, test, and deploy images with the desired software and configurations.</p>
+                    <p>For more information, refer to the official documentation: <a href="https://docs.oracle.com/en/operating-systems/oracle-linux/9/ibldr/index.html" target="_blank">OCI Image Builder Documentation</a>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>OCI Image Builder Components</h2>
+                    <ul>
+                        <li><a href="https://docs.oracle.com/en/operating-systems/oracle-linux/9/ibldr/api.html" target="_blank">API</a></li>
+                        <li><a href="https://docs.oracle.com/en/operating-systems/oracle-linux/9/cockpit" target="_blank">Cockpit</a></li>
+                        <li><a href="https://docs.oracle.com/en/operating-systems/oracle-linux/9/ibldr/imagebuilder.html" target="_blank">Image Builder</a></li>
+                    </ul>
+                </div>
+            </div>
+        <div class="container">
+            <h2>Cockpit</h2>
+            <a href="https://docs.oracle.com/en/operating-systems/oracle-linux/9/cockpit">Cockpit</a>
+            <p>localhost:9090</p>
+        </div>
+</div>
+---
+myblueprint.toml
+https://docs.oracle.com/en/operating-systems/oracle-linux/9/ibldr/BlueprintFormat.html
+
+// Basic Metadata Information
+````js
+name = "myblueprint"// name: The name of the blueprint (required)
+
+        description = "My Blueprint"// description: A description for the blueprint (optional)
+        version = "0.0.2"// version: A version number for the blueprint (required). https://semver.org/
+        distro = "ol-9"	// distro: The required distro in the Image Builder repository, which the image is based on (optional) if distro=empty elif  img=host img distro
+````
+
+Package Information
+	* List of packages, modules, containers, and groups. Each entry has corresponding [[heading]]	
+	* Each package, module, container, or group listing must have own heading
+````js
+[[packages]]
+name = "tmux"
+version = "3.5"
+
+[[packages]]
+name = "python3"
+version = "3.9.18"
+
+[[groups]]
+name = "graphical-admin-tools"
+````
+
+Customizations
+	* Include any other specifications for image that aren't associated with pkgs. ie users, groups, and keys
+````js
+[customizations]
+hostname = "system1"
+
+[[customizations.locale]]
+languages = ["en_GB.utf8"]
+keyboard = "gb"
+
+[[customizations.timezone]]
+timezone = "Europe/Dublin"
+ntpservers = ["uk.pool.ntp.org"]
+
+[[customizations.group]]
+name = "students"
+````
+
+````js
+sudo composer-cli blueprints save myblueprintfile // Save or export existing blueprint
+sudo composer-cli blueprints push myblueprintfile.toml // Push or import the blueprint into Image Builder
+sudo composer-cli blueprints list // List Blueprints
+sudo composer-cli blueprints show myblueprint // (Optional) View the blueprint configuration
+sudo composer-cli blueprints depsolve myblueprint // Verify that the blueprint's components and versions and corresponding dependencies are valid
+sudo rm -rf /var/cache/osbuild-composer/* // If Image Builder is unable to validate the dependencies, delete the osbuild-composer cache
+sudo systemctl restart osbuild-composer // Restart
+sudo composer-cli compose start myblueprint image-type // Create the Image
+sudo composer-cli compose types // Display UUID
+sudo composer-cli compose info image-uuid // Use UUID to track progress
+sudo composer-cli compose image image-uuid // Download Image file
+sudo composer-cli compose [metadata|logs] image-uuid // Download Image Metadata
+````
+</main>
+</body>
+</html>
+
+
