@@ -12,8 +12,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Saturn.ApiService\Saturn.ApiService.csproj" />
-    <ProjectReference Include="..\Saturn.Web\Saturn.Web.csproj" />
+    <ProjectReference Include="..\Saturn.Database\Saturn.Database.csproj" />
+    <ProjectReference Include="..\Saturn.Flask\Saturn.Flask.pyproj" /> 
+    <ProjectReference Include="..\Saturn.K8RoboFleet\Saturn.K8RoboFleet.yaml" />
     <ProjectReference Include="..\Saturn.RobotWindow\Saturn.RobotWindow.csproj" />
+    <ProjectReference Include="..\Saturn.ServiceDefaults\Saturn.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Saturn.Web\Saturn.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
