@@ -1,0 +1,127 @@
+
+# Aspire
+# Directory structure:
+# kubernetes-robot-fleet/
+# ├── charts/
+# │   └── grafana/
+# ├── manifests/
+# │   ├── robot-fleet-manager-deployment.yaml
+# │   ├── robot-fleet-manager-service.yaml
+# │   ├── robot-fleet-manager-configmap.yaml
+# │   └── grafana-dashboard-configmap.yaml
+# └── README.md
+
+# README.md
+# Kubernetes Robot Fleet Manager Template
+#
+# This template deploys:
+# - A Robot Fleet Manager (sample app, replace with your implementation)
+# - Grafana for dashboards
+# - Example dashboard config
+
+# manifests/robot-fleet-manager-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: robot-fleet-manager
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: robot-fleet-manager
+    template:
+        metadata:
+            labels:
+                app: robot-fleet-manager
+        spec:
+            containers:
+            - name: robot-fleet-manager
+                image: your-dockerhub-username/robot-fleet-manager:latest
+                ports:
+                - containerPort: 8080
+                env:
+                - name: CONFIG_PATH
+                    value: "/config/config.yaml"
+                volumeMounts:
+                - name: config-volume
+                    mountPath: /config
+            volumes:
+            - name: config-volume
+                configMap:
+                    name: robot-fleet-manager-config
+
+---
+# manifests/robot-fleet-manager-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+    name: robot-fleet-manager
+spec:
+    selector:
+        app: robot-fleet-manager
+    ports:
+        - protocol: TCP
+            port: 80
+            targetPort: 8080
+
+---
+# manifests/robot-fleet-manager-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: robot-fleet-manager-config
+data:
+    config.yaml: |
+        fleet:
+            robots:
+                - id: robot1
+                    type: quadruped
+                - id: robot2
+                    type: wheeled
+
+---
+# manifests/grafana-dashboard-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: grafana-dashboard
+    labels:
+        grafana_dashboard: "1"
+data:
+    robot-fleet-dashboard.json: |
+        {
+            "annotations": { "list": [] },
+            "panels": [
+                {
+                    "type": "graph",
+                    "title": "Robot Status",
+                    "targets": [],
+                    "datasource": null
+                }
+            ],
+            "title": "Robot Fleet Overview",
+            "schemaVersion": 16,
+            "version": 1
+        }
+
+# charts/grafana/values.yaml (snippet)
+adminPassword: admin
+dashboardProviders:
+    dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+        - name: 'default'
+            orgId: 1
+            folder: ''
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+                path: /var/lib/grafana/dashboards
+dashboardsConfigMaps:
+    - grafana-dashboard
+
+# To deploy:
+# 1. kubectl apply -f manifests/
+# 2. helm repo add grafana https://grafana.github.io/helm-charts
+# 3. helm install grafana grafana/grafana -f charts/grafana/values.yaml

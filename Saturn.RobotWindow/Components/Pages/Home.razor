@@ -1,0 +1,27 @@
+@page "/"
+
+<PageTitle>Controller</PageTitle>
+
+
+  <head>
+    <meta charset='UTF-8'>
+    <link rel='stylesheet' href="@Assets["/Layout/Generic.css"]" />
+    <link rel="icon" type="image/png" href="https://cyberbotics.com/assets/images/webots.png">
+  </head>
+
+    <!--
+    References:
+    - animated tabs: https://www.w3schools.com/w3css/w3css_tabulators.asp
+    - responsive div layout: https://stackoverflow.com/questions/1091322/how-to-fade-to-display-inline-block
+    -->
+    <canvas id="canvas"></canvas>
+    <div ondragstart="return false">
+      <div id="menu">
+        <button id="menu-close-button" onclick="closeMenu()">&times;</button>
+      </div>
+      <div id="content">
+        <button id="menu-open-button" onclick="openMenu()">&#9776;</button>
+        <p id="no-controller-label">No controller.</p>
+      </div>
+    </div>
+
