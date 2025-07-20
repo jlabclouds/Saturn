@@ -21,12 +21,20 @@ builder.AddProject<Projects.Saturn_RobotWindow>("robotwindow")
     .WithReference(apiService)
     .WaitFor(apiService);
 
-builder.AddProject<Projects.Saturn_FlaskWeb>("flaskweb")
+builder.AddProject<Projects.Saturn_FlaskWeb>("flask")
     .WithExternalHttpEndpoints()
     .WithHttpHealthCheck("/health")
     .WithReference(cache)
     .WaitFor(cache)
     .WithReference(apiService)
-    .WaitFor(apiService);    
+    .WaitFor(apiService);  
+
+builder.AddProject<Projects.Saturn_K8RoboFleet>("kfleet")
+    .WithExternalHttpEndpoints()
+    .WithHttpHealthCheck("/health")
+    .WithReference(cache)
+    .WaitFor(cache)
+    .WithReference(apiService)
+    .WaitFor(apiService);       
 
 builder.Build().Run();
