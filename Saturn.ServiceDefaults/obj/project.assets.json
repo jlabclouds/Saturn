@@ -2024,24 +2024,32 @@
     ]
   },
   "packageFolders": {
-    "/Users/jesse/.nuget/packages/": {}
+    "C:\\Users\\jesse\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/Saturn.ServiceDefaults.csproj",
+      "projectUniqueName": "C:\\Users\\jesse\\Blazor\\Saturn\\Saturn.ServiceDefaults\\Saturn.ServiceDefaults.csproj",
       "projectName": "Saturn.ServiceDefaults",
-      "projectPath": "/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/Saturn.ServiceDefaults.csproj",
-      "packagesPath": "/Users/jesse/.nuget/packages/",
-      "outputPath": "/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/obj/",
+      "projectPath": "C:\\Users\\jesse\\Blazor\\Saturn\\Saturn.ServiceDefaults\\Saturn.ServiceDefaults.csproj",
+      "packagesPath": "C:\\Users\\jesse\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jesse\\Blazor\\Saturn\\Saturn.ServiceDefaults\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/jesse/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\jesse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2114,7 +2122,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
