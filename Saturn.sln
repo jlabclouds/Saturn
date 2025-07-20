@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.ApiService", "Saturn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.Web", "Saturn.Web\Saturn.Web.csproj", "{766AFB8E-2A35-B04B-5BA4-905514E040FC}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "FlaskWeb", "FlaskWeb\FlaskWeb.pyproj", "{95D38FF4-6AB7-4203-B987-EE0F497AA4C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.RobotWindow", "Saturn.RobotWindow\Saturn.RobotWindow.csproj", "{ROBOTWINDOW_GUID}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

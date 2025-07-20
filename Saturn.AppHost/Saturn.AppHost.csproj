@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Saturn.ApiService\Saturn.ApiService.csproj" />
     <ProjectReference Include="..\Saturn.Web\Saturn.Web.csproj" />
+    <ProjectReference Include="..\Saturn.RobotWindow\Saturn.RobotWindow.csproj" />
   </ItemGroup>
 
   <ItemGroup>
