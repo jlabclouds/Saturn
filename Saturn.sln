@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.ApiService", "Saturn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.Web", "Saturn.Web\Saturn.Web.csproj", "{766AFB8E-2A35-B04B-5BA4-905514E040FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.RobotWindow", "Saturn.RobotWindow\Saturn.RobotWindow.csproj", "{ROBOTWINDOW_GUID}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
