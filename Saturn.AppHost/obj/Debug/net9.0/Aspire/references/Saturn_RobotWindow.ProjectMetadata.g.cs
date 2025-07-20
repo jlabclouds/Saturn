@@ -7,5 +7,5 @@ namespace Projects;
 [global::System.Diagnostics.DebuggerDisplay("Type = {GetType().Name,nq}, ProjectPath = {ProjectPath}")]
 public class Saturn_RobotWindow : global::Aspire.Hosting.IProjectMetadata
 {
-    public string ProjectPath => """/Users/jesse/Source/Saturn/Saturn.RobotWindow/Saturn.RobotWindow.csproj""";
+    public string ProjectPath => """C:\Users\jesse\Blazor\Saturn\Saturn.RobotWindow\Saturn.RobotWindow.csproj""";
 }

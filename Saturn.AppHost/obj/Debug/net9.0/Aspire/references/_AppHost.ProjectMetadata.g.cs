@@ -8,5 +8,5 @@ namespace Projects;
 public class Saturn_AppHost
 {
     private Saturn_AppHost() { }
-    public static string ProjectPath => """/Users/jesse/Source/Saturn/Saturn.AppHost""";
+    public static string ProjectPath => """C:\Users\jesse\Blazor\Saturn\Saturn.AppHost""";
 }
