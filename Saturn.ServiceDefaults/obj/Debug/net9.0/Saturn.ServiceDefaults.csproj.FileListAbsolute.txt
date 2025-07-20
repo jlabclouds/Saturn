@@ -1,0 +1,13 @@
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/bin/Debug/net9.0/Saturn.ServiceDefaults.deps.json
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/bin/Debug/net9.0/Saturn.ServiceDefaults.dll
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/bin/Debug/net9.0/Saturn.ServiceDefaults.pdb
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/obj/Debug/net9.0/Saturn.ServiceDefaults.csproj.AssemblyReference.cache
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/obj/Debug/net9.0/Saturn.ServiceDefaults.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/obj/Debug/net9.0/Saturn.ServiceDefaults.AssemblyInfoInputs.cache
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/obj/Debug/net9.0/Saturn.ServiceDefaults.AssemblyInfo.cs
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/obj/Debug/net9.0/Saturn.ServiceDefaults.csproj.CoreCompileInputs.cache
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/obj/Debug/net9.0/Saturn.ServiceDefaults.sourcelink.json
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/obj/Debug/net9.0/Saturn.ServiceDefaults.dll
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/obj/Debug/net9.0/refint/Saturn.ServiceDefaults.dll
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/obj/Debug/net9.0/Saturn.ServiceDefaults.pdb
+/Users/jesse/Source/Saturn/Saturn.ServiceDefaults/obj/Debug/net9.0/ref/Saturn.ServiceDefaults.dll
