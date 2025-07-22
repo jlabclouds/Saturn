@@ -14,12 +14,78 @@
        <script>
            let map3D = null;
 
-           async function init() {
-               const { Map3DElement, MapMode } = await google.maps.importLibrary("maps3d");
+       async function init() {
+           const { Map3DElement, MapMode, Marker3DInteractiveElement } = await google.maps.importLibrary("maps3d");
+           const { PinElement } = await google.maps.importLibrary('marker');
 
                map3D = new Map3DElement({
                    mode: MapMode.HYBRID,
                });
+
+              map3D.addEventListener('gmp-click', (event) => {
+                 console.log("camera: { center: { lat: " + map3D.center.lat + ", lng : " + map3D.center.lng + ", altitude: " + map3D.center.altitude + " }, range: " + map3D.range + ", tilt: " + map3D.tilt + " ,heading: " + map3D.heading + ", }");
+                 console.log("{ lat: " + event.position.lat + ", lng : " + event.position.lng + ", altitude: " + event.position.altitude + " }");
+                 // Stop the camera animation when the map is clicked.
+                 map3D.stopCameraAnimation();
+              });
+
+           const marker = new Marker3DElement({
+               position: { lat: 51.5332, lng: -0.1260, altitude: 75 },
+               label: 'Google UK',
+               altitudeMode: 'ABSOLUTE',
+               extruded: true,
+           });
+
+           const marker = new Marker3DInteractiveElement({
+               position: { lat: 51.5332, lng: -0.1260, altitude: 75 },
+               label: 'Google UK',
+               altitudeMode: 'ABSOLUTE',
+               extruded: true,
+           });
+
+           marker.addEventListener('gmp-click', (event) => {
+               map3D.flyCameraTo({
+                   endCamera: {
+                       center: marker.position,
+                       tilt: 65,
+                       range: 500,
+                       heading: 0,
+                   },
+                   durationMillis: 12500,
+               });
+
+
+   map3D.addEventListener('gmp-animationend', () => {
+       map3D.flyCameraAround({
+           camera: {
+               center: marker.position,
+               tilt: 65,
+               range: 500,
+               heading: 0,
+           },
+           durationMillis: 5000,
+           rounds: 1
+       });
+   }, { once: true });
+
+               event.stopPropagation();
+           });
+
+           marker.addEventListener('gmp-click', (event) => {
+               alert('You clicked on : ' + event.target.label);
+               event.stopPropagation();
+           });
+
+const base = document.location.href.substr(0, document.location.href.lastIndexOf("/"));
+
+           const markerPin = new PinElement({
+               "background": 'white',
+               "glyph": new URL(base + '/images/gb.svg'),
+               "scale": 1.0,
+           });
+           marker.append(markerPin);
+
+           map3D.append(marker);
 
                document.body.append(map3D);
            }
