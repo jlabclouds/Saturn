@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Step 8 - Paris!</title>
+   <style>
+       body {
+           height: 100vh;
+           margin: 0;
+       }
+   </style>
+</head>
+
+<body>
+   <script>
+       (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
+           key: "<INSERT API KEY>",
+           v: "alpha",
+           // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+           // Add other bootstrap parameters as needed, using camel case.
+       });
+   </script>
+   <script>
+       let map3D = null;
+
+       const base = document.location.href.substr(0, document.location.href.lastIndexOf("/"));
+
+       const europeCamera = {
+           center: { lat: 46.717, lng: 7.075, altitude: 2175.130 },
+           range: 5814650,
+           tilt: 33,
+           heading: 4.36,
+       };
+
+       const officeLocations = [
+           {
+               "name": "Google France",
+               "camera": {
+                   "center": { lat: 48.877276, lng: 2.329978, altitude: 48 },
+                   "range": 178,
+                   "tilt": 57.48,
+                   "heading": -17,
+               },
+               "point": { lat: 48.8775183, lng: 2.3299791, altitude: 60 },
+               "pin": {
+                   "background": 'white',
+                   "glyph": new URL(base + '/images/fr.svg'),
+                   "scale": 1.0,
+               },
+           },
+           {
+               "name": "Google UK",
+               "camera": {
+                   "center": { lat: 51.5332, lng: -0.1260, altitude: 38.8 },
+                   "range": 500,
+                   "tilt": 56.21672368296945,
+                   "heading": -31.15763027564165,
+               },
+               "point": { lat: 51.5332, lng: -0.1260, altitude: 75 },
+               "pin": {
+                   "background": 'white',
+                   "glyph": new URL(base + '/images/gb.svg'),
+                   "scale": 1.0,
+               },
+           }]
+
+       async function init() {
+           const { Map3DElement, MapMode, Marker3DInteractiveElement } = await google.maps.importLibrary("maps3d");
+           const { PinElement } = await google.maps.importLibrary('marker');
+
+           map3D = new Map3DElement({
+               ...europeCamera,
+               mode: MapMode.SATELLITE,
+           });
+
+           officeLocations.forEach(office => {
+               const marker = new Marker3DInteractiveElement({
+                   position: office.point,
+                   label: office.name,
+                   altitudeMode: 'ABSOLUTE',
+                   extruded: true,
+               });
+
+               marker.addEventListener('gmp-click', (event) => {
+                   map3D.flyCameraTo({
+                       endCamera: office.camera,
+                       durationMillis: 5000,
+                   });
+
+                   map3D.addEventListener('gmp-animationend', () => {
+                       map3D.flyCameraAround({
+                           camera: office.camera,
+                           durationMillis: 5000,
+                           rounds: 1
+                       });
+
+                       map3D.addEventListener('gmp-animationend', () => {
+                           map3D.flyCameraTo({
+                               endCamera: europeCamera,
+                               durationMillis: 5000,
+                           });
+                       }, { once: true });
+
+                   }, { once: true });
+
+                   event.stopPropagation();
+               });
+
+               const markerPin = new PinElement(office.pin);
+               marker.append(markerPin);
+
+               map3D.append(marker);
+           });
+           document.body.append(map3D);
+       }
+       init();
+   </script>
+</body>
+
+</html>
