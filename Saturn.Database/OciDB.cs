@@ -1,3 +1,4 @@
+# https://learn.microsoft.com/en-us/dotnet/aspire/database/oracle-entity-framework-integration?tabs=dotnet-cli
 var oracle = builder.AddOracle("oracle, password")
                     .WithLifetime(ContainerLifetime.Persistent);
                     .WithDataVolume() 
