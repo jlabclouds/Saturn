@@ -1,8 +1,0 @@
-/Users/jesse/Source/Saturn/Saturn.FlaskWeb/obj/Debug/net9.0/Saturn.FlaskWeb.csproj.AssemblyReference.cache
-/Users/jesse/Source/Saturn/Saturn.FlaskWeb/obj/Debug/net9.0/rpswa.dswa.cache.json
-/Users/jesse/Source/Saturn/Saturn.FlaskWeb/obj/Debug/net9.0/Saturn.FlaskWeb.GeneratedMSBuildEditorConfig.editorconfig
-/Users/jesse/Source/Saturn/Saturn.FlaskWeb/obj/Debug/net9.0/Saturn.FlaskWeb.AssemblyInfoInputs.cache
-/Users/jesse/Source/Saturn/Saturn.FlaskWeb/obj/Debug/net9.0/Saturn.FlaskWeb.AssemblyInfo.cs
-/Users/jesse/Source/Saturn/Saturn.FlaskWeb/obj/Debug/net9.0/Saturn.FlaskWeb.csproj.CoreCompileInputs.cache
-/Users/jesse/Source/Saturn/Saturn.FlaskWeb/obj/Debug/net9.0/Saturn.FlaskWeb.MvcApplicationPartsAssemblyInfo.cache
-/Users/jesse/Source/Saturn/Saturn.FlaskWeb/obj/Debug/net9.0/Saturn.FlaskWeb.sourcelink.json
